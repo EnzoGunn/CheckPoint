@@ -9,7 +9,7 @@ from flask.ext.api import status
 from service import service
 from svc_config import svc_config
 from svc_utils import svc_utils
-from response import Error
+from svc_response import Error
 
 app = Flask(__name__)
 
