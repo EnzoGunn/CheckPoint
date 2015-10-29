@@ -12,9 +12,10 @@ from svc_utils import svc_utils
 from svc_response import Error
 
 app = Flask(__name__)
+test = 1.0
 
 
-@app.route('/admin/status', methods=['GET', 'OPTIONS'])
+@app.route('/'+test+'/admin/status', methods=['GET', 'OPTIONS'])
 @svc_utils.crossdomain(origin='*', methods=['PATCH', 'OPTIONS'], headers=['Content-Type', 'Authorization'])
 def ping():
     svc = service()
