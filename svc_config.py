@@ -17,5 +17,5 @@ with open(configFilePath, 'r') as file:
 
 class svc_config(object):
     # required parameters
-    
+    api_version = 1.0
     # optional parameters

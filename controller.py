@@ -12,10 +12,9 @@ from svc_utils import svc_utils
 from svc_response import Error
 
 app = Flask(__name__)
-test = 1.0
 
 
-@app.route('/'+test+'/admin/status', methods=['GET', 'OPTIONS'])
+@app.route('/{0:.1f}/admin/status'.format(svc_config.api_version), methods=['GET', 'OPTIONS'])
 @svc_utils.crossdomain(origin='*', methods=['PATCH', 'OPTIONS'], headers=['Content-Type', 'Authorization'])
 def ping():
     svc = service()
@@ -28,7 +27,7 @@ def ping():
     return svc_response
 
 
-@app.route('/event/<event_id>', methods=['POST', 'OPTIONS'])
+@app.route('/{0:.1f}/events/<customer_id>'.format(svc_config.api_version), methods=['POST', 'OPTIONS'])
 @svc_utils.crossdomain(origin='*', methods=['PATCH', 'OPTIONS'], headers=['Content-Type', 'Authorization'])
 def device_registration(event_id):
     if request.data is None or request.data == '':
