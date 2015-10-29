@@ -2,10 +2,10 @@
 
 import controller
 import sys
-from data_access import data_access
-from service import service
-from svc_config import svc_config
+from data_access import DataAccess
+from service import Service
+from svc_config import SvcConfig
 
 if __name__ == '__main__':
 
-    controller.app.run(host=svc_config.host, debug=svc_config.is_debug_mode, port=svc_config.http_port_number)
+    controller.app.run(host=SvcConfig.host, debug=SvcConfig.is_debug_mode, port=SvcConfig.http_port_number)

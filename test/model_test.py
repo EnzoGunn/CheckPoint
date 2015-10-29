@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from model import event, event_detail
+from model import Event, EventExtended
 import unittest
 
 alert_time = '2013-02-08T11:14:26.0Z'
@@ -23,10 +23,10 @@ external_url = 'http://groogle.com/malware.html'
 src = '192.168.100.101'
 
 
-class test_event(unittest.TestCase):
+class TestEvent(unittest.TestCase):
 
     def test_event_model(self):
-        event_obj = event(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
+        event_obj = Event(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
 
         self.assertEqual(alert_time, event_obj.alertTime)
         self.assertEqual(device_id, event_obj.deviceId)
@@ -37,8 +37,8 @@ class test_event(unittest.TestCase):
         self.assertEqual(protocol_version, event_obj.protocolVersion)
         self.assertEqual(provider_name, event_obj.providerName)
 
-    def test_event_model(self):
-        event_detail_obj = event_detail(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
+    def test_event_extended_model(self):
+        event_detail_obj = EventExtended(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
 
         self.assertEqual(alert_time, event_detail_obj.alertTime)
         self.assertEqual(device_id, event_detail_obj.deviceId)

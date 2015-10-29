@@ -3,23 +3,21 @@
 
 import status as status
 import jsonpickle
-from data_access import data_access
+from data_access import DataAccess
 from flask import Flask, request, make_response
 from flask.ext.api import status
-from service import service
-from svc_config import svc_config
-from svc_utils import svc_utils
-from svc_response import Error
+from service import Service
+from svc_config import SvcConfig
+from svc_utils import SvcUtils
 
 app = Flask(__name__)
 
 
-@app.route('/{0:.1f}/admin/status'.format(svc_config.api_version), methods=['GET', 'OPTIONS'])
-@svc_utils.crossdomain(origin='*', methods=['PATCH', 'OPTIONS'], headers=['Content-Type', 'Authorization'])
+@app.route('/{0:.1f}/admin/status'.format(SvcConfig.api_version), methods=['GET', 'OPTIONS'])
 def ping():
-    svc = service()
+    svc = Service()
     ping = svc.ping()
-    ping_response = svc_utils.serialize_object(ping)
+    ping_response = SvcUtils.serialize_object(ping)
 
     svc_response = make_response(ping_response)
     svc_response.mimetype = 'application/json'
@@ -27,12 +25,11 @@ def ping():
     return svc_response
 
 
-@app.route('/{0:.1f}/events/<customer_id>'.format(svc_config.api_version), methods=['POST', 'OPTIONS'])
-@svc_utils.crossdomain(origin='*', methods=['PATCH', 'OPTIONS'], headers=['Content-Type', 'Authorization'])
-def device_registration(event_id):
+@app.route('/{0:.1f}/events/<customer_id>'.format(SvcConfig.api_version), methods=['POST', 'OPTIONS'])
+def device_registration(customer_id):
     if request.data is None or request.data == '':
         error = Error('No request was submitted')
-        error_response = svc_utils.serialize_object(error)
+        error_response = SvcUtils.serialize_object(error)
         svc_response = make_response(error_response)
         svc_response.mimetype = 'application/json'
         svc_response.status_code = status.HTTP_400_BAD_REQUEST
@@ -45,7 +42,7 @@ def device_registration(event_id):
 
         except Exception as ex:
             error = Error(ex.message)
-            error_response = svc_utils.serialize_object(error)
+            error_response = SvcUtils.serialize_object(error)
             svc_response = make_response(error_response)
             svc_response.mimetype = 'application/json'
             svc_response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR

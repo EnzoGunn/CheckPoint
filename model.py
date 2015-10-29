@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 
-class event(object):
+class Event(object):
     def __init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name):
         self.alertTime = alert_time # e.g. 2013-02-08T11:14:26.0Z
         self.deviceId = device_id # e.g.ba6a59f4-e692-4724-ba36-c28132c761de
@@ -12,7 +12,8 @@ class event(object):
         self.protocolVersion = protocol_version # e.g.1.0a
         self.providerName = provider_name # e.g.Security Platform
 
-class event_detail(event):
+
+class EventExtended(Event):
     def __init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, event_hash, file_name, file_hash, external_url, src):
         self.alertTime = alert_time # e.g. 2013-02-08T11:14:26.0Z
         self.deviceId = device_id # e.g.ba6a59f4-e692-4724-ba36-c28132c761de

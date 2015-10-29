@@ -3,11 +3,14 @@
 import datetime
 import svc_enums
 from model import model
-from svc_config import svc_config
-from svc_utils import svc_utils
-from svc_response import svc_response
+from svc_config import SvcConfig
+from svc_utils import SvcUtils
+from svc_response import PingDto
+import setup
 
-logger = svc_utils.get_logger(__name__)
+logger = SvcUtils.get_logger(__name__)
 
 
-class service(object):
+class Service(object):
+    def ping(self):
+        ping = PingDto(SvcConfig.api_version, )

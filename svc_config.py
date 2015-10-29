@@ -2,7 +2,7 @@
 
 import json
 import sys
-from svc_constants import svc_constants
+from svc_constants import SvcConstants
 
 # configuration parsing setup
 configFilePath = './settings.development.json'
@@ -15,7 +15,8 @@ with open(configFilePath, 'r') as file:
     settings = json.load(file)
 
 
-class svc_config(object):
+class SvcConfig(object):
     # required parameters
-    api_version = 1.0
+    api_version = settings.get(SvcConstants.API_VERSION_KEY, SvcConstants.API_VERSION)
     # optional parameters
+    isDebugMode = settings.get(SvcConstants.IS_DEBUG_MODE_KEY, SvcConstants.IS_DEBUG_MODE)
