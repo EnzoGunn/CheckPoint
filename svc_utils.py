@@ -4,6 +4,7 @@ import jsonpickle
 import logging
 import os
 import time
+import re
 from datetime import timedelta
 from flask import make_response, request, current_app
 from functools import update_wrapper
@@ -42,5 +43,9 @@ class SvcUtils(object):
         return logger
 
     @staticmethod
-    def error_message(error_source, args):
-        return '{0} - '.format(error_source) + ', '.join('{0}: {1}'.format(key, str(value)) for key, value in args.items())
+    def error_message(error_msg, args):
+        return '{0} - '.format(error_msg) + ', '.join('{0}: {1}'.format(key, str(value)) for key, value in args.items())
+
+    @staticmethod
+    def regex_validate(regex, msg):
+        return re.match(regex, msg)
