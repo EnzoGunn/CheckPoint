@@ -1,9 +1,6 @@
 #! /usr/bin/env python
 
 import controller
-import sys
-from data_access import DataAccess
-from service import Service
 from svc_config import SvcConfig
 
 if __name__ == '__main__':

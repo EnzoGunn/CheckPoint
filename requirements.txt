@@ -1,9 +1,5 @@
-enum34
 flask
 flask-api
 jsonpickle
-mockito
-pyodbc
 requests
-sqlalchemy
 status

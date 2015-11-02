@@ -2,12 +2,11 @@
 
 import jsonpickle
 import logging
+import io
 import os
 import time
 import re
-from datetime import timedelta
-from flask import make_response, request, current_app
-from functools import update_wrapper
+from datetime import datetime
 from logging.handlers import TimedRotatingFileHandler
 from svc_config import SvcConfig
 from svc_constants import SvcConstants
@@ -27,7 +26,7 @@ class SvcUtils(object):
     def get_logger(class_name):
         logging.Formatter.converter = time.gmtime
         log_level = logging.DEBUG if SvcConfig.is_debug_mode else logging.WARNING
-        logging.basicConfig(format=SvcConfig.logMessageFormat, level=log_level, datefmt=SvcConstants.DATETIME_FORMAT)
+        logging.basicConfig(format=SvcConfig.log_message_format, level=log_level, datefmt=SvcConstants.DATETIME_FORMAT)
         logger = logging.getLogger(class_name)
 
         if not SvcConfig.is_debug_mode:
@@ -49,3 +48,26 @@ class SvcUtils(object):
     @staticmethod
     def regex_validate(regex, msg):
         return re.match(regex, msg)
+
+    @staticmethod
+    def validate_date(timestamp):
+        try:
+            datetime.strptime(timestamp, SvcConfig.datetime_format)
+            return True
+        except ValueError:
+            return False
+
+    @staticmethod
+    def read(*names, **kwargs):
+        with io.open(
+            os.path.join(os.path.dirname(__file__), *names), encoding=kwargs.get("encoding", "utf8")
+        ) as fp:
+            return fp.read()
+
+    @staticmethod
+    def get_build_version():
+        version_file = SvcUtils.read('__init__.py')
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file, re.M)
+        if version_match:
+            return version_match.group(1)
+        raise RuntimeError("Unable to find version string.")

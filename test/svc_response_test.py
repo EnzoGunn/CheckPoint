@@ -8,9 +8,9 @@ build_version = '1.0.0.0'
 is_debug_mode = True
 
 
-class TestSvcResponse(unittest.TestCase):
+class TestPingDto(unittest.TestCase):
 
-    def test_service_status(self):
+    def test_ping_dto(self):
         ping = PingDto(api_version, build_version, is_debug_mode)
 
         self.assertEqual(api_version, ping.api_version)
