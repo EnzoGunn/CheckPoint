@@ -38,7 +38,7 @@ class TestEvent(unittest.TestCase):
         self.assertEqual(provider_name, event_obj.providerName)
 
     def test_event_extended_model(self):
-        event_detail_obj = EventDetail(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
+        event_detail_obj = EventDetail(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, event_hash, file_name, file_hash, external_url, src)
 
         self.assertEqual(alert_time, event_detail_obj.alertTime)
         self.assertEqual(device_id, event_detail_obj.deviceId)

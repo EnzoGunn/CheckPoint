@@ -22,7 +22,7 @@ class Event(object):
 
 
 class EventDetail(Event):
-    def __init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, event_hash, file_name, file_hash, external_url, src):
+    def __init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards=None, dst_ip=None, event_severity=None, event_type=None, event_description=None, event_hash=None, file_name=None, file_hash=None, external_url=None, src=None):
         Event.__init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
         # Boolean value. 'false' is the same as not providing this field at all
         self.disableDstSafeguards = disable_dst_safeguards  # e.g. true

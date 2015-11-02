@@ -7,5 +7,5 @@ setup(
     version=SvcUtils.get_build_version(),
     description='CheckPoint',
     url='https://github.com/EnzoGunn/CheckPoint',
-    author='Ahmad Saeed',
+    author='Ahmad Saeed'
 )
