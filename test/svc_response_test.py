@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from svc_response import PingDto
+from ..svc_response import PingDto
 import unittest
 
 api_version = 1.0

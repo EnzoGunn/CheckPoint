@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from svc_config import SvcConfig
+from ..svc_config import SvcConfig
 import unittest
 
 

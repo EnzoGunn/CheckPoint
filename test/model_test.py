@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from model import Event, EventDetail
+from ..model import Event, EventDetail
 import unittest
 
 alert_time = '2013-02-08T11:14:26.0Z'
