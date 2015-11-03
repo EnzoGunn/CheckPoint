@@ -12,7 +12,6 @@ class TestPingDto(unittest.TestCase):
 
     def test_ping_dto(self):
         ping = PingDto(api_version, build_version, is_debug_mode)
-
         self.assertEqual(api_version, ping.api_version)
         self.assertEqual(build_version, ping.build_version)
         self.assertTrue(ping.is_debug_mode)
