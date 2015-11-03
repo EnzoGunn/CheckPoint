@@ -34,7 +34,7 @@ class EventRequest(object):
             raise ValueError(error_msg)
 
 
-class EventDetailRequest(EventRequest):
+class EventExtendedRequest(EventRequest):
     def __init__(self, customer_key, device_id, device_version, dst_url, event_time, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, file_name, external_url, src):
         EventRequest.__init__(self, customer_key, device_id, device_version, dst_url, event_time)
         self.disableDstSafeguards = disable_dst_safeguards  # Boolean value. 'false' is the same as not providing this field at all
