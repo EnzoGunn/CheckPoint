@@ -29,7 +29,7 @@ class EventRequest(object):
         if SvcUtils.regex_validate(SvcConfig.uri_validation_regex, self.dstUrl) is False:
             error_msg = SvcUtils.error_message('Invalid event request, destination URL is invalid', {'destination URL': self.dstUrl})
             raise ValueError(error_msg)
-        if SvcUtils.validate_date(self.eventTime)is False:
+        if SvcUtils.validate_timestamp(self.eventTime)is False:
             error_msg = SvcUtils.error_message('Invalid event request, event time is invalid', {'event time': self.eventTime})
             raise ValueError(error_msg)
 

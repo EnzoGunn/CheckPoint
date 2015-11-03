@@ -29,10 +29,21 @@ class TestSvcUtils(unittest.TestCase):
         regex = '[0-9]{2}-[a-f]{2}'
         valid_argument = '12-ab'
         invalid_argument = '123-ab'
-        valid_result = SvcUtils.regex_validate(regex, valid_argument)
-        invalid_result = 
-        self.assertTrue(valid_result)
-        self.assertEqual(error_message, result)
+        result = SvcUtils.regex_validate(regex, valid_argument)
+        self.assertTrue(result)
+        result = SvcUtils.regex_validate(regex, invalid_argument)
+        self.assertFalse(result)
+
+    def test_validate_timestamp(self):
+        valid_timestamp = '2015-11-03T14:34:25Z'
+        invalid_timestamp = '2015-13-03T14:34:25Z'
+        malformatted_timestamp = '11-2015/03T24:24:24'
+        result = SvcUtils.validate_timestamp(valid_timestamp)
+        self.assertTrue(result)
+        result = SvcUtils.validate_timestamp(invalid_timestamp)
+        self.assertFalse(result)
+        result = SvcUtils.validate_timestamp(malformatted_timestamp)
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':

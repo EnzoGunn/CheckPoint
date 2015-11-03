@@ -50,7 +50,7 @@ class SvcUtils(object):
         return re.match(regex, msg)
 
     @staticmethod
-    def validate_date(timestamp):
+    def validate_timestamp(timestamp):
         try:
             datetime.strptime(timestamp, SvcConfig.datetime_format)
             return True
