@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from ..model import Event, EventDetail
+from ..model import Event, EventExtended
 import unittest
 
 alert_time = '2013-02-08T11:14:26.0Z'
@@ -37,7 +37,7 @@ class TestEvent(unittest.TestCase):
         self.assertEqual(provider_name, event_obj.providerName)
 
     def test_event_extended_model(self):
-        event_detail_obj = EventDetail(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, event_hash, file_name, file_hash, external_url, src)
+        event_detail_obj = EventExtended(alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, event_hash, file_name, file_hash, external_url, src)
         self.assertEqual(alert_time, event_detail_obj.alertTime)
         self.assertEqual(device_id, event_detail_obj.deviceId)
         self.assertEqual(device_version, event_detail_obj.deviceVersion)

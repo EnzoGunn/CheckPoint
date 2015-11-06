@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
+from svc_constants import SvcConstants
 import json
 import sys
-from svc_constants import SvcConstants
 
 # configuration parsing setup
 configFilePath = './settings.development.json'
@@ -22,6 +22,8 @@ class SvcConfig(object):
     # optional parameters
     host = settings.get(SvcConstants.HOST_KEY, SvcConstants.HOST)
     http_port_number = settings.get(SvcConstants.HTTP_PORT_NUMBER_KEY, SvcConstants.HTTP_PORT_NUMBER)
+    protocol_version = settings.get(SvcConstants.PROTOCOL_VERSION_KEY, SvcConstants.PROTOCOL_VERSION)
+    provider_name = settings.get(SvcConstants.PROVIDER_NAME_KEY, SvcConstants.PROVIDER_NAME)
     include_json_metadata = settings.get(SvcConstants.INCLUDE_JSON_METADATA_KEY, SvcConstants.INCLUDE_JSON_METADATA)
     is_debug_mode = settings.get(SvcConstants.IS_DEBUG_MODE_KEY, SvcConstants.IS_DEBUG_MODE)
     log_message_format = settings.get(SvcConstants.LOG_MESSAGE_FORMAT_KEY, SvcConstants.LOG_MESSAGE_FORMAT)

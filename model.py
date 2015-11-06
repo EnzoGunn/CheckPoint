@@ -21,7 +21,7 @@ class Event(object):
         self.providerName = provider_name  # e.g.Security Platform
 
 
-class EventDetail(Event):
+class EventExtended(Event):
     def __init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name, disable_dst_safeguards=None, dst_ip=None, event_severity=None, event_type=None, event_description=None, event_hash=None, file_name=None, file_hash=None, external_url=None, src=None):
         Event.__init__(self, alert_time, device_id, device_version, dst_domain, dst_url, event_time, protocol_version, provider_name)
         # Boolean value. 'false' is the same as not providing this field at all

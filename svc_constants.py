@@ -10,17 +10,24 @@ class SvcConstants(object):
     HTTP_PORT_NUMBER_KEY = 'httpPortNumber'
     HOST_KEY = 'host'
     SP_INTEGRATION_URL_KEY = 'securityPlatformIntegrationUrl'
+    PROTOCOL_VERSION_KEY = 'protocolVersion'
+    PROVIDER_NAME_KEY = 'providerName'
     URI_VALIDATION_REGEX_KEY = 'uriValidationRegex'
     DATETIME_FORMAT_KEY = 'dateTimeFormat'
     UUID_VALIDATION_REGEX_KEY = 'uuidValidationRegex'
     IP_V4_VALIDATION_REGEX_KEY = 'ipv4ValidationRegex'
     IP_V6_VALIDATION_REGEX_KEY = 'ipv6ValidationRegex'
     # default values
+    LOG_FILE_FOLDER = './logs'
+    LOG_FILE_PATH = './logs/log'
+    DATETIME_FORMAT = '%Y-%m-%d %I:%M:%S %p'
     LOG_MESSAGE_FORMAT = '[%(asctime)s UTC] %(levelname)s: %(message)s'
     IS_DEBUG_MODE = False
     INCLUDE_JSON_METADATA = False
     HTTP_PORT_NUMBER = 5000
     HOST = '127.0.0.1'
+    PROTOCOL_VERSION = '1.0a'
+    PROVIDER_NAME = 'Security Platform'
     URI_VALIDATION_REGEX = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
     UUID_VALIDATION_REGEX = '^[0-9A-Fa-f]{8}(-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'

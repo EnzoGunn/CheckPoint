@@ -6,11 +6,16 @@ from svc_utils import SvcUtils
 
 class EventRequest(object):
     def __init__(self, customer_key, device_id, device_version, dst_url, event_time):
-        self.customerKey = customer_key  # a fixed UUID-v4 unique customer key
-        self.deviceId = device_id  # The ID of the device sending the event
-        self.deviceVersion = device_version  # Version of device sending the event
-        self.dstUrl = dst_url  # The destination URL encoded, following RFC3986 guidelines
-        self.eventTime = event_time  # Time event was detected, must match the following style 2013-02-08T09:30:26Z
+        # a fixed UUID-v4 unique customer key
+        self.customerKey = customer_key
+        # The ID of the device sending the event
+        self.deviceId = device_id
+        # Version of device sending the event
+        self.deviceVersion = device_version
+        # The destination URL encoded, following RFC3986 guidelines
+        self.dstUrl = dst_url
+        # Time event was detected, must match the following style 2013-02-08T09:30:26Z
+        self.eventTime = event_time
 
     def validate_request(self):
         if self.customerKey is None:
@@ -37,14 +42,22 @@ class EventRequest(object):
 class EventExtendedRequest(EventRequest):
     def __init__(self, customer_key, device_id, device_version, dst_url, event_time, disable_dst_safeguards, dst_ip, event_severity, event_type, event_description, file_name, external_url, src):
         EventRequest.__init__(self, customer_key, device_id, device_version, dst_url, event_time)
-        self.disableDstSafeguards = disable_dst_safeguards  # Boolean value. 'false' is the same as not providing this field at all
-        self.dstIp = dst_ip  # The destination IP of the domain, specified in IPv4 dotted-decimal notation. An example would be '8.8.8.8'
-        self.eventSeverity = event_severity  # The partner threat level or rating, eg: severe, bad, high, etc.
-        self.eventType = event_type  # Common name or classification of threat
-        self.eventDescription = event_description  # Variant or other descriptor of event type
-        self.fileName = file_name  # Path to file exhibiting malicious behavior
-        self.externalUrl = external_url  # External page containing additional information about event
-        self.src = src  # IP/Host of the infected computer/device that was patient 0 for the event
+        # Boolean value. 'false' is the same as not providing this field at all
+        self.disableDstSafeguards = disable_dst_safeguards
+        # The destination IP of the domain, specified in IPv4 dotted-decimal notation. An example would be '8.8.8.8'
+        self.dstIp = dst_ip
+        # The partner threat level or rating, eg: severe, bad, high, etc.
+        self.eventSeverity = event_severity
+        # Common name or classification of threat
+        self.eventType = event_type
+        # Variant or other descriptor of event type
+        self.eventDescription = event_description
+        # Path to file exhibiting malicious behavior
+        self.fileName = file_name
+        # External page containing additional information about event
+        self.externalUrl = external_url
+        # IP/Host of the infected computer/device that was patient 0 for the event
+        self.src = src
 
     def validate_request(self):
         EventRequest.validate_request(self)
